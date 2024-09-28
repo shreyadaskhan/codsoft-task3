@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html style="background-color: rgb(58, 60, 65);">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>home</title>
+<style>
+    .box{
+        display: grid;
+        grid-template-columns: auto;
+        background-color: bisque;
+        text-align: center;
+        border-radius: 1px;
+        border: solid blanchedalmond;
+        width:300px;
+        height:450px;
+        margin-top: 150px;
+        margin-left: 450px;
+        margin-right: 300px;
+    }
+    input{
+        font-size: large;
+    }
+    #history{
+    margin-left: 1.8em;
+    width: 300px;
+    height: 350px;
+    border-radius: 8px;
+    overflow-y: scroll;
+    font-size: 20px;
+    background: bisque;
+    box-shadow: inset 5px 5px 8px rgb(206, 179, 147),
+                inset -5px -5px 8px rgb(206, 179, 147);
+    box-sizing: border-box;
+    padding: 10px 20px;
+    margin-left: 450px;
+    margin-right: 300px;
+    }
+
+#history:hover{
+    box-shadow: inset 5px 5px 8px rgb(206, 179, 147),
+                inset -5px -5px 8px rgb(206, 179, 147);
+    }
+
+    </style>
+    
+<body>
+    <div class="box">
+        <form>
+            <div >
+                <input type="text"name="display"style="width:280px;height:70px;margin-top:5px;">
+            </div>
+            <div>
+                <input type="button" value="AC" onclick="display.value=''"style="width: 50px;height:50px;margin-left:15px;margin-top:10px;margin-right:10px;margin-bottom:10px;float:left;">
+                <input type="button" value="DE"onclick="display.value=display.value.toString().slice(0,-1)"style="width: 50px;height:50px;margin-left:10px;margin-top:10px;margin-right:10px;margin-bottom:10px;float:left;">
+                <input type="button" value="%"onclick="display.value+='%'"style="width: 50px;height:50px;margin-left:10px;margin-top:10px;margin-right:10px;margin-bottom:10px;;float:left;">
+                <input type="button" value="/"onclick="display.value+='/'"style="width: 50px;height:50px;margin-left:10px;margin-top:10px;margin-right:10px;margin-bottom:10px;float:left;">
+            </div><br>
+            <div>
+                <input type="button" value="7" onclick="display.value+='7'"style="width: 50px;height:50px;margin-left:15px;margin-top:10px;margin-right:10px;margin-bottom:10px;float:left;">
+                <input type="button" value="8"onclick="display.value+='8'"style="width: 50px;height:50px;margin-left:10px;margin-top:10px;margin-right:10px;margin-bottom:10px;float:left;">
+                <input type="button" value="9"onclick="display.value+='9'"style="width: 50px;height:50px;margin-left:10px;margin-top:10px;margin-right:10px;margin-bottom:10px;float:left;">
+                <input type="button" value="*"onclick="display.value+='*'"style="width: 50px;height:50px;margin-left:10px;margin-top:10px;margin-right:10px;margin-bottom:10px;float:left;">
+            </div><br>
+            <div>
+                <input type="button" value="4" onclick="display.value+='4'"style="width: 50px;height:50px;margin-left:15px;margin-top:10px;margin-right:10px;margin-bottom:10px;float:left;">
+                <input type="button" value="5"onclick="display.value+='5'"style="width: 50px;height:50px;margin-left:10px;margin-top:10px;margin-right:10px;margin-bottom:10px;float:left;">
+                <input type="button" value="6"onclick="display.value+='6'"style="width: 50px;height:50px;margin-left:10px;margin-top:10px;margin-right:10px;margin-bottom:10px;float:left;">
+                <input type="button" value="-"onclick="display.value+='-'"style="width: 50px;height:50px;margin-left:10px;margin-top:10px;margin-right:10px;margin-bottom:10px;float:left;">
+            </div><br>
+            <div>
+                <input type="button" value="1" onclick="display.value+='1'"style="width: 50px;height:50px;margin-left:15px;margin-top:10px;margin-right:10px;margin-bottom:10px;float:left;">
+                <input type="button" value="2"onclick="display.value+='2'"style="width: 50px;height:50px;margin-left:10px;margin-top:10px;margin-right:10px;margin-bottom:10px;float:left;">
+                <input type="button" value="3"onclick="display.value+='3'"style="width: 50px;height:50px;margin-left:10px;margin-top:10px;margin-right:10px;margin-bottom:10px;float:left;">
+                <input type="button" value="+"onclick="display.value+='+'"style="width: 50px;height:50px;margin-left:10px;margin-top:10px;margin-right:10px;margin-bottom:10px;float:left;">
+            </div><br>
+            <div>
+                <input type="button" value="00" onclick="display.value+='00'"style="width: 50px;height:50px;margin-left:15px;margin-top:10px;margin-right:10px;margin-bottom:10px;float:left;">
+                <input type="button" value="0"onclick="display.value+='0'"style="width: 50px;height:50px;margin-left:10px;margin-top:10px;margin-right:10px;margin-bottom:10px;float:left;">
+                <input type="button" value="."onclick="display.value+='.'"style="width: 50px;height:50px;margin-left:10px;margin-top:10px;margin-right:10px;margin-bottom:10px;float:left;">
+                <input type="button" value="="onclick="display.value=calculation(display.value)" class="equal"style="width: 50px;height:50px;margin-left:10px;margin-top:10px;margin-right:10px;margin-bottom:10px;float:left;">
+            </div>
+        </form>
+    </div>
+    <br>
+    <div id="history">
+        <h1><center>History</center></h1>
+    </div>
+    <script type="text/javascript">
+
+        let history = document.getElementById('history');
+        function calculation(v){
+            para = document.createElement('p');
+            data = v + " = " + eval(v);
+            para.innerText = data;
+            history.appendChild(para);
+            return eval(v);
+        }
+
+    </script>
+</body>
+</head>
+</html>
